@@ -82,7 +82,7 @@ end
 
 # destroy: delete a food item
 delete '/foods/:id' do
-	binding.pry
+	#binding.pry
 	@food = Food.find(params[:id])
 	@orders = Order.all
 	Food.destroy(params[:id])
