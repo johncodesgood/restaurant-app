@@ -1,0 +1,25 @@
+
+<div class="container">
+	<div class="sixteen columns">
+
+	<h3><strong>Orders</strong></h3>
+	<p>There are currently <strong><%= @orders.count %></strong> orders:</p>
+	
+	<table>
+		<tr><th>ID</th><th>Food</th><th>Party</th><th>No Charge</th><th>Delete</th></tr>
+		<% @orders.each do |order| %>
+			<tr>
+			<tr><td><%= order.id %></td><td><a href="/foods/<%= @foods.find(order.food_id).id %>"><%= @foods.find(order.food_id).name %></a></td><td><a href="/parties/<%= @parties.find(order.party_id).id %>"><%= @parties.find(order.party_id).name %></a></td><td><%= order.no_charge %></td>
+		<td><form action="/orders/<%= order.id %>" method="post">
+		<input type="hidden" name="_method" value="delete"/></input>
+		<input type="submit" value="Delete" id="button_small"></input></td>
+		</tr>
+	</form>
+		<% end %>
+	</table>
+	<br>
+	<form action="/orders/new" method="get">
+	<input type="submit" value="Add New"></input>
+	</form>
+</div>
+</div>

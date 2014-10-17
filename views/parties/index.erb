@@ -1,0 +1,27 @@
+
+<div class="container">
+	<div class="sixteen columns">
+
+	<h3><strong>Parties</strong></h3>
+	<p>There are currently <strong><%= @parties.count %></strong> parties dining:</p>
+	<table>
+		<tr><th>Name</th><th>Table #</th><th>Guests</th><th>Paid?</th></tr>
+		<% @parties.each do |party| %>
+			<tr>
+			<tr><td><a href="/parties/<%= party.id %>"><%= party.name %></a></td><td><%= party.table_num %></td><td><%= party.num_guests %></td><td><%= party.paid %></td>
+				<td><form action="/parties/<%= party.id %>/edit" method="get">
+					<input type="submit" value="Edit" id="button_small"></input>
+				</form></td>
+				<td><form action="/parties/<%= party.id %>" method="post">
+					<input type="hidden" name="_method" value="delete"/></input>
+					<input type="submit" value="Delete" id="button_small"></input>
+				</form></td>
+				</tr>
+		<% end %>
+	</table>
+	<br>
+	<form action="/parties/new" method="get">
+	<input type="submit" value="Add New"></input>
+	</form>
+</div>
+</div>

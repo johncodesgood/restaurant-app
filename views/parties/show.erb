@@ -1,0 +1,60 @@
+<div class="container">
+	<div class="sixteen columns">
+
+	<h3><strong><%= @party.name %></strong></h3>
+	<br>
+
+	<table>
+		<tr><th>Name</th><th>Table #</th><th>Guests</th><th>Paid</th><th>Edit</th><th>Delete</th><th>Mark as Paid</th><th>Receipt</th></tr>
+			<tr><td><%= @party.name %></td><td><%= @party.table_num %></td><td><%= @party.num_guests %></td><td><%= @party.paid %></td>
+			<td><form action="/parties/<%= @party.id %>/edit" method="get">
+				<input type="submit" value="Edit" id="button_small"></input>
+			</form></td>
+			<td><form action="/parties/<%= @party.id %>" method="post">
+				<input type="hidden" name="_method" value="delete"/></input>
+				<input type="submit" value="Delete" id="button_small"></input>
+			</form></td>
+			<td><form action="/parties/<%= @party.id %>/checkout" method="post">
+				<input type="hidden" name="_method" value="patch"/></input>
+				<input type="submit" value="Mark as Paid" id="button_small"></input>
+			</form></td>
+			<td><form action="/parties/<%= @party.id %>/receipt" method="get">
+				<input type="submit" value="Get Receipt" id="button_small"></input>
+			</form></td>
+			</tr>
+	</table>
+	<br>
+	<br>
+	</div>
+
+	<div class="eight columns">
+	<h4><strong>Current Orders</strong></h4>
+	<br>
+	<table>
+			<% @party.orders.each do |order| %>
+				<a style="text-decoration: none" href="/foods/<%= @foods.find(order.food_id).id %>"><%= @foods.find(order.food_id).name %></a>,
+			<% end %>
+	</table>
+	</div>
+
+	<div class="eight columns">
+	<h4><strong>New Order?</strong></h4>
+	<br>
+	<form action="/orders" method="post">
+		<% @foods.each do |food| %>
+			<input type="radio" name="order[food_id]" value="<%= food.id %>"><%= food.name %><br>
+		<% end %>
+			<input type="hidden" name="order[party_id]" value="<%= @party.id %>"></input>
+			<br>
+			<input type="submit" value="Add Food Item"></input>
+	</form>
+	<% if @error_already_paid %>
+		<div class="errors">
+      	<h4><%= @error_already_paid %></h4>
+		</div>
+	<% end %>	
+	</div>
+
+
+
+</div>

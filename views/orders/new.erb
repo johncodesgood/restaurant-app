@@ -1,0 +1,15 @@
+
+
+<form action="/orders" method="post">
+	<p>Foods</p>
+	<% @foods.each do |food| %>
+		<input type="radio" name="order[food_id]" value="<%= food.id %>"><%= food.name %><br>
+	<% end %>
+	<p>Parties</p>
+	<% @parties.each do |party| %>
+		<input type="radio" name="order[party_id]" value="<%= party.id %>"><%= party.name %><br>
+	<% end %>
+
+		<input type="submit" value="Submit">
+
+</form>

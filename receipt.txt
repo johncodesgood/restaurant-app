@@ -1,0 +1,21 @@
+RESTAURANT RECEIPT
+
+Food		Cost		No Charge
+Hamburgers		$7		
+Pasta		$24		
+Cashew Chicken		$24		
+Hamburgers		$7		
+Cashew Chicken		$24		
+Cashew Chicken		$24		
+Hamburgers		$7		
+Hamburgers		$7		
+Pasta		$24		
+Pasta		$24		
+Hamburgers		$7		
+Hamburgers		$7		
+Pasta		$24		
+Hamburgers		$7		
+TOTAL = $217
+Tip Suggestions: 15% = $32.55
+Tip Suggestions: 20% = $43.4
+Tip Suggestions: 25% = $54.25

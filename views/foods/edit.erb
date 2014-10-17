@@ -1,0 +1,16 @@
+<div class="container">
+	<div class="sixteen columns">
+
+	<h3><strong>Food</strong></h3>
+	<br>
+	<form action="/foods/<%= @food.id %>" method="post">
+		<input type="hidden" name="_method" value="patch"/></input>
+		<p>Name of Food: <input name="food[name]" value="<%= @food.name %>"></input></p>
+		<p>Cuisine: <input name="food[cuisine]" value="<%= @food.cuisine %>"></input></p>
+		<p>Price: <input name="food[price]" value="<%= @food.price %>"></input></p>
+		<p>Allergens: <input name="food[allergens]" value="<%= @food.allergens %>"></input></p>
+		<br>
+		<input type="submit" value="Edit Food"></input>
+	</form>
+</div>
+</div>

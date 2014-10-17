@@ -1,0 +1,37 @@
+<div class="container">
+	<div class="eight columns">
+
+	<h3><strong><%= @party.name %>'s Orders</strong></h3>
+	<br>
+<% total = 0 %> 
+<table>
+<tr><th>Food</th><th>Cost</th><th>No Charge</th></tr>
+	<% @party.orders.each do |order| %>
+		<tr>
+			<td><%= @foods.find(order.food_id).name %></td>
+			<td>$<%= @foods.find(order.food_id).price %></td>
+			<td><%= order.no_charge %></td>
+			<% total += @foods.find(order.food_id).price if order.no_charge != true %>
+			<td><form action="/orders/<%= order.id %>" method="post">
+				<input type="hidden" name="_method" value="patch"/></input>
+				<input type="submit" value="No Charge" id="button_small"></input>
+			</form></td>
+		</tr>
+	<% end %>
+
+	</tr>
+</table> 
+</div>
+	<div class="eight columns">
+		<h2>Total = $<%= total %></h2>
+		<br>
+		<h4>Tip Suggestions: 15% = $<%= (total * 0.15).round(2)%><h4>
+		<h4>Tip Suggestions: 20% = $<%= (total * 0.20).round(2)%><h4>
+		<h4>Tip Suggestions: 25% = $<%= (total * 0.25).round(2)%><h4>
+		<br>	
+
+	<form action="/download/receipt.txt" method="get">
+	<input type="submit" value="Download"></input>
+	</form>
+</div>
+</div>

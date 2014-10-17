@@ -1,0 +1,31 @@
+
+<div class="container">
+	<div class="sixteen columns">
+
+	<h3><strong>Menu</strong></h3>
+	<p>Fall 2014</p>
+	<table>
+		<tr><th>Name</th><th>Cuisine</th><th>Price</th><th>Allergens</th><th>Edit</th><th>Delete</th></th>
+		<% @foods.each do |food| %>
+			<tr>
+			<tr><td><a href="/foods/<%= food.id %>"><%= food.name %></a></td><td><%= food.cuisine %></td>
+			<td>$<%= food.price %></td><td><%= food.allergens %></td>
+			<td><form action="/foods/<%= food.id %>/edit" method="get">
+				<input type="submit" value="Edit" id="button_small"></input>
+			</form></td>
+			<td><form action="/foods/<%= food.id %>" method="post">
+				<input type="hidden" name="_method" value="delete"/></input>
+				<input type="submit" value="Delete" id="button_small"></input>
+			</form></td>
+			</tr>
+		<% end %>
+	</table>
+	<br>
+	<form action="/foods/new" method="get">
+	<input type="submit" value="Add New"></input>
+	</form>
+
+	</div>
+</div>
+
+

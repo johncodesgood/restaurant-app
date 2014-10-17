@@ -1,0 +1,25 @@
+<div class="container">
+	<div class="eight columns">
+		<h3><strong>Add New Food Item</strong></h3>
+		<br>
+		<form action="/foods" method="post">
+			<p> Name of Food: <input name="food[name]"></input></p>
+			<p> Cuisine: <input name="food[cuisine]"></input></p>
+			<p> Price: <input name="food[price]"></input></p>
+			<p> Allergens: <input name="food[allergens]"></input></p>
+			<br>
+			<input type="submit" value="Add New Food"></input>
+		</form>
+
+		<% if @errors %>
+		<div class="errors">
+			<h4>YOU HAVE <%= @errors.count %> <%= @errors.count == 1 ? "ERROR" : "ERRORS" %>.</h4>
+  			<ul>
+    			<% @errors.each do |error|  %>
+      			<li><h4><%= error %></h4></li>
+    			<% end %>
+  			</ul>
+		</div>
+		<% end %>
+	</div>
+</div>
