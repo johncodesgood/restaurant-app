@@ -12,7 +12,7 @@
 			<td><a href="/foods/<%= @foods.find(order.food_id).id %>/edit">$<%= @foods.find(order.food_id).price %></a></td>
 			<td><%= order.no_charge %></td>
 			<% total += @foods.find(order.food_id).price if order.no_charge != true %>
-			<td><form action="/orders/<%= order.id %>" method="post">
+			<td><form action="/orders/<%= order.id %>/receipt_page" method="post">
 				<input type="hidden" name="_method" value="patch"/></input>
 				<input type="submit" value="No Charge" id="button_small"></input>
 			</form></td>

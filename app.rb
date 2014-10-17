@@ -146,7 +146,7 @@ delete '/parties/:id' do
 			Order.destroy(order.id)
 		end 
 	end
-	redirect '/'
+	redirect '/parties'
 end
 
 # debug code to view orders
@@ -196,10 +196,18 @@ patch '/orders/:id/party_page' do
 	redirect "/parties/#{order.party_id}"
 end
 
+# change order to no charge
+patch '/orders/:id/receipt_page' do 
+	order = Order.find(params[:id])
+	order.no_charge = true
+	order.save
+	redirect "/parties/#{order.party_id}/receipt"
+end
+
 # delete order
 delete '/orders/:id' do
 	Order.destroy(params[:id])
-	redirect '/orders/:id'
+	redirect '/orders'
 end
 
 # view and download receipt
@@ -228,7 +236,7 @@ patch '/parties/:id/checkout' do
 	party = Party.find(params[:id])
 	party.paid = true
 	party.save
-	redirect '/parties/:id'
+	redirect "/parties/#{params[:id]}"
 end
 
 get '/download/:filename' do |filename|
