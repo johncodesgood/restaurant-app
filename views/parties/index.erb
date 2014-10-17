@@ -8,7 +8,7 @@
 		<tr><th>Name</th><th>Table #</th><th>Guests</th><th>Paid?</th></tr>
 		<% @parties.each do |party| %>
 			<tr>
-			<tr><td><a href="/parties/<%= party.id %>"><%= party.name %></a></td><td><%= party.table_num %></td><td><%= party.num_guests %></td><td><%= party.paid %></td>
+			<tr><td><a href="/parties/<%= party.id %>"><%= party.name %></a></td><td><a href="/parties/<%= party.id %>/edit"><%= party.table_num %></a></td><td><a href="/parties/<%= party.id %>/edit"><%= party.num_guests %></a></td><td><a href="/parties/<%= party.id %>/edit"><%= party.paid %></a></td>
 				<td><form action="/parties/<%= party.id %>/edit" method="get">
 					<input type="submit" value="Edit" id="button_small"></input>
 				</form></td>

@@ -6,7 +6,7 @@
 
 	<table>
 		<tr><th>Name</th><th>Table #</th><th>Guests</th><th>Paid</th><th>Edit</th><th>Delete</th><th>Mark as Paid</th><th>Receipt</th></tr>
-			<tr><td><%= @party.name %></td><td><%= @party.table_num %></td><td><%= @party.num_guests %></td><td><%= @party.paid %></td>
+			<tr><td><%= @party.name %></td><td><a href="/parties/<%= @party.id %>/edit"><%= @party.table_num %></a></td><td><a href="/parties/<%= @party.id %>/edit"><%= @party.num_guests %></a></td><td><a href="/parties/<%= @party.id %>/edit"><%= @party.paid %></a></td>
 			<td><form action="/parties/<%= @party.id %>/edit" method="get">
 				<input type="submit" value="Edit" id="button_small"></input>
 			</form></td>
@@ -30,11 +30,24 @@
 	<div class="eight columns">
 	<h4><strong>Current Orders</strong></h4>
 	<br>
-	<table>
-			<% @party.orders.each do |order| %>
-				<a style="text-decoration: none" href="/foods/<%= @foods.find(order.food_id).id %>"><%= @foods.find(order.food_id).name %></a>,
-			<% end %>
-	</table>
+	<% total = 0 %>
+<table>
+<tr><th>Food</th><th>Cost</th><th>No Charge</th><th>Remove Charge</th></tr>
+	<% @party.orders.each do |order| %>
+		<tr>
+			<td><a href="/foods/<%= @foods.find(order.food_id).id %>/edit"><%= @foods.find(order.food_id).name %></a></td>
+			<td><a href="/foods/<%= @foods.find(order.food_id).id %>/edit">$<%= @foods.find(order.food_id).price %></a></td>
+			<td><%= order.no_charge %></td>
+			<% total += @foods.find(order.food_id).price if order.no_charge != true %>
+			<td><form action="/orders/<%= order.id %>/party_page" method="post">
+				<input type="hidden" name="_method" value="patch"/></input>
+				<input type="submit" value="No Charge" id="button_small"></input>
+			</form></td>
+		</tr>
+	<% end %>
+
+	</tr>
+</table> 
 	</div>
 
 	<div class="eight columns">

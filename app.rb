@@ -181,17 +181,25 @@ post '/orders' do
 end
 
 # change order to no charge
-patch '/orders/:id' do 
+patch '/orders/:id/orders_page' do 
 	order = Order.find(params[:id])
 	order.no_charge = true
 	order.save
-	redirect '/parties'
+	redirect '/orders'
+end
+
+# change order to no charge
+patch '/orders/:id/party_page' do 
+	order = Order.find(params[:id])
+	order.no_charge = true
+	order.save
+	redirect "/parties/#{order.party_id}"
 end
 
 # delete order
 delete '/orders/:id' do
 	Order.destroy(params[:id])
-	redirect '/'
+	redirect '/orders/:id'
 end
 
 # view and download receipt
@@ -220,7 +228,7 @@ patch '/parties/:id/checkout' do
 	party = Party.find(params[:id])
 	party.paid = true
 	party.save
-	redirect '/parties'
+	redirect '/parties/:id'
 end
 
 get '/download/:filename' do |filename|

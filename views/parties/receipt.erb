@@ -5,11 +5,11 @@
 	<br>
 <% total = 0 %> 
 <table>
-<tr><th>Food</th><th>Cost</th><th>No Charge</th></tr>
+<tr><th>Food</th><th>Cost</th><th>No Charge</th><th>Remove Charge</th></tr>
 	<% @party.orders.each do |order| %>
 		<tr>
-			<td><%= @foods.find(order.food_id).name %></td>
-			<td>$<%= @foods.find(order.food_id).price %></td>
+			<td><a href="/foods/<%= @foods.find(order.food_id).id %>/edit"><%= @foods.find(order.food_id).name %></a></td>
+			<td><a href="/foods/<%= @foods.find(order.food_id).id %>/edit">$<%= @foods.find(order.food_id).price %></a></td>
 			<td><%= order.no_charge %></td>
 			<% total += @foods.find(order.food_id).price if order.no_charge != true %>
 			<td><form action="/orders/<%= order.id %>" method="post">
