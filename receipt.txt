@@ -1,8 +1,0 @@
-RESTAURANT RECEIPT
-
-Food		Cost		No Charge
-Hamburger		$12		
-TOTAL = $12
-Tip Suggestions: 15% = $1.8
-Tip Suggestions: 20% = $2.4
-Tip Suggestions: 25% = $3.0

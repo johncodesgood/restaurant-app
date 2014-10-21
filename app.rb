@@ -2,28 +2,13 @@ require 'bundler'
 Bundler.require
 require 'pry'
 
-ActiveRecord::Base.establish_connection(
-{
-	adapter: 'postgresql',
-	database: 'restaurant'
-}
-	)
+# require 'sinatra/activerecord/rake'
+require_relative 'connection.rb'
 
-class Food < ActiveRecord::Base
-	validates :name, uniqueness: true
-	has_many(:orders)
-	has_many(:parties, :through => :orders)
-end
+require_relative 'models/food'
+require_relative 'models/order'
+require_relative 'models/party'
 
-class Party < ActiveRecord::Base
-	has_many(:orders)
-	has_many(:foods, :through => :orders)
-end
-
-class Order < ActiveRecord::Base
-	belongs_to(:food)
-	belongs_to(:party)
-end
 
 # menu of app and links to current parties
 get '/' do

@@ -1,34 +1,35 @@
 <div class="container">
 
-		<div class="eight columns">
-			<h3><strong>Menu</strong></h3>
-			<p>Fall 2014</p>
-			<table>
-				<tr><th>Name</th><th>Cuisine</th><th>Price</th><th>Allergens</th></th>
-					<% @foods.each do |food| %>
-					<tr>
-						<tr><td><a href="/foods/<%= food.id %>"><%= food.name %></a></td><td><a href="/foods/<%= food.id %>/edit"><%= food.cuisine %></a></td><td><a href="/foods/<%= food.id %>/edit">$<%= food.price %></a></td><td><a href="/foods/<%= food.id %>/edit"><%= food.allergens %></a></td></tr>
-					<% end %>
-			</table>
-			<br>
-			<form action="/foods/new" method="get">
+	<div class="eight columns">
+		<h3><strong>Menu</strong></h3>
+		<p>Fall 2014</p>
+		<table>
+			<tr><th>Name</th><th>Cuisine</th><th>Price</th><th>Allergens</th></th>
+				<% @foods.each do |food| %>
+				<tr>
+					<tr><td><a href="/foods/<%= food.id %>"><%= food.name %></a></td><td><a href="/foods/<%= food.id %>/edit"><%= food.cuisine %></a></td><td><a href="/foods/<%= food.id %>/edit">$<%= food.price %></a></td><td><a href="/foods/<%= food.id %>/edit"><%= food.allergens %></a></td></tr>
+				<% end %>
+		</table>
+		<br>
+		<form action="/foods/new" method="get">
 			<input type="submit" value="Add New"></input>
-			</form>
-		</div>
-		<div class="eight columns">
-			<h3><strong>Current Dining Parties</strong></h3>
-			<p>There are currently <strong><%= @parties.count %></strong> parties dining:</p>
-			<table>
-				<tr><th>Name</th><th>Table #</th><th>Guests</th><th>Paid</th></tr>
+		</form>
+	</div>
+
+	<div class="eight columns">
+		<h3><strong>Current Dining Parties</strong></h3>
+		<p>There are currently <strong><%= @parties.count %></strong> parties dining:</p>
+		<table>
+			<tr><th>Name</th><th>Table #</th><th>Guests</th><th>Paid</th></tr>
 				<% @parties.each do |party| %>
 				<tr>
 					<tr><td><a href="/parties/<%= party.id %>"><%= party.name %></a></td><td><a href="/parties/<%= party.id %>/edit"><%= party.table_num %></a></td><td><a href="/parties/<%= party.id %>/edit"><%= party.num_guests %></a></td><td><a href="/parties/<%= party.id %>/edit"><%= party.paid %></a></td>
 					</tr>
-					<% end %>
-			</table>
-			<br>
-			<form action="/parties/new" method="get">
-				<input type="submit" value="Add New"></input>
-			</form>
-
+				<% end %>
+		</table>
+		<br>
+		<form action="/parties/new" method="get">
+			<input type="submit" value="Add New"></input>
+		</form>
+	</div>
 	</div><!-- container -->
