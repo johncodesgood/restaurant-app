@@ -1,0 +1,12 @@
+RESTAURANT RECEIPT
+
+Food		Cost		No Charge
+Steak		$40		false
+Mac & Cheese		$14		false
+Chicken Noodle Soup		$15		false
+Fizzy Water		$3		false
+Mac & Cheese		$14		false
+TOTAL = $86
+Tip Suggestions: 15% = $12.9
+Tip Suggestions: 20% = $17.2
+Tip Suggestions: 25% = $21.5

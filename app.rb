@@ -9,6 +9,10 @@ require_relative 'models/food'
 require_relative 'models/order'
 require_relative 'models/party'
 
+# ***** Helpers *****
+# require_relative 'helpers/link_helper'
+# helpers ActiveSupport::Inflector
+
 
 # menu of app and links to current parties
 get '/' do
