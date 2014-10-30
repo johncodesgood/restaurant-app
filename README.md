@@ -3,6 +3,7 @@
 <p>The RESTaurant Order Servicing app tracks food orders and parties for a restaurant. It features detailed information on the food menu, parties in the restaurant, and orders waiting to be filled. The app also alows all information to be updated and can even create a receipt for a party when the finish their meal.</p>
 
 <p>Details of the key app pages:</p>
+<br>
 <strong>HOME PAGE</strong>
 <ul>
 <li>Overview of menu and current dining parties</li>
