@@ -11,9 +11,11 @@
 				<% end %>
 		</table>
 		<br>
-		<form action="/foods/new" method="get">
-			<input type="submit" value="Add New"></input>
-		</form>
+		<% if session[:current_user] %>
+			<form action="/foods/new" method="get">
+				<input type="submit" value="Add New"></input>
+			</form>
+		<% end %>
 	</div>
 
 	<div class="eight columns">

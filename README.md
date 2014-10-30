@@ -26,7 +26,11 @@ PARTY PAGE
 - User can add new food orders to the party on this page
 - User can get receipt for this party by clicking the "Get Receipt" button
 
-RECEIPT  PAGE
+RECEIPT PAGE
 - User can get to individual party receipt page by clicking the "Get Receipt" button on the PARTY PAGE party.
 - Lists the parties orders, total amount of orders, and tip suggestions
 - User can download the receipt by clicking on the "download" button
+
+AUTHENTICATION
+- Users can sign up and login to the app to get additional access rights
+- Currently setup to only allow authenticated users to add new food items to the menu
