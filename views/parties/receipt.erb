@@ -12,10 +12,7 @@
 			<td><a href="/foods/<%= @foods.find(order.food_id).id %>/edit">$<%= @foods.find(order.food_id).price %></a></td>
 			<td><%= order.no_charge %></td>
 			<% total += @foods.find(order.food_id).price if order.no_charge != true %>
-			<td><form action="/orders/<%= order.id %>/receipt_page" method="post">
-				<input type="hidden" name="_method" value="patch"/></input>
-				<input type="submit" value="No Charge" id="button_small"></input>
-			</form></td>
+			<td><%= patch_button("/orders/#{order.id}/receipt_page", "No Charge") %></td>
 		</tr>
 	<% end %>
 
@@ -29,9 +26,6 @@
 		<h4>Tip Suggestions: 20% = $<%= (total * 0.20).round(2)%><h4>
 		<h4>Tip Suggestions: 25% = $<%= (total * 0.25).round(2)%><h4>
 		<br>	
-
-	<form action="/download/receipt.txt" method="get">
-	<input type="submit" value="Download"></input>
-	</form>
+	<%= get_button_regular("/download/receipt.txt", "Download") %>
 </div>
 </div>

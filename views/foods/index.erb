@@ -10,21 +10,14 @@
 			<tr>
 			<tr><td><a href="/foods/<%= food.id %>"><%= food.name %></a></td><td><a href="/foods/<%= food.id %>/edit"><%= food.cuisine %></a></td>
 			<td><a href="/foods/<%= food.id %>/edit">$<%= food.price %></a></td><td><a href="/foods/<%= food.id %>/edit"><%= food.allergens %></a></td>
-			<td><form action="/foods/<%= food.id %>/edit" method="get">
-				<input type="submit" value="Edit" id="button_small"></input>
-			</form></td>
-			<td><form action="/foods/<%= food.id %>" method="post">
-				<input type="hidden" name="_method" value="delete"/></input>
-				<input type="submit" value="Delete" id="button_small"></input>
-			</form></td>
+			<td><%= get_button_small("/foods/#{food.id}/edit", "Edit") %></td>
+			<td><%= delete_button("/foods/#{food.id}") %></td>
 			</tr>
 		<% end %>
 	</table>
 	<br>
 	<% if session[:current_user] %>
-		<form action="/foods/new" method="get">
-			<input type="submit" value="Add New"></input>
-		</form>
+		<td><%= get_button_regular("/foods/new", "Add New") %></td>
 	<% end %>
 	<br>
 	</div>

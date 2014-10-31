@@ -1,4 +1,3 @@
-
 <div class="container">
 	<div class="sixteen columns">
 
@@ -9,19 +8,12 @@
 		<% @parties.each do |party| %>
 			<tr>
 			<tr><td><a href="/parties/<%= party.id %>"><%= party.name %></a></td><td><a href="/parties/<%= party.id %>/edit"><%= party.table_num %></a></td><td><a href="/parties/<%= party.id %>/edit"><%= party.num_guests %></a></td><td><a href="/parties/<%= party.id %>/edit"><%= party.paid %></a></td>
-				<td><form action="/parties/<%= party.id %>/edit" method="get">
-					<input type="submit" value="Edit" id="button_small"></input>
-				</form></td>
-				<td><form action="/parties/<%= party.id %>" method="post">
-					<input type="hidden" name="_method" value="delete"/></input>
-					<input type="submit" value="Delete" id="button_small"></input>
-				</form></td>
+				<td><%= get_button_small("/parties/#{party.id}/edit", "Edit") %></td>
+				<td><%= delete_button("/parties/#{party.id}") %></td>
 				</tr>
 		<% end %>
 	</table>
 	<br>
-	<form action="/parties/new" method="get">
-	<input type="submit" value="Add New"></input>
-	</form>
+	<%= get_button_regular("/parties/new", "Add New") %>
 </div>
 </div>

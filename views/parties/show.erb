@@ -7,20 +7,10 @@
 	<table>
 		<tr><th>Name</th><th>Table #</th><th>Guests</th><th>Paid</th><th>Edit</th><th>Delete</th><th>Mark as Paid</th><th>Receipt</th></tr>
 			<tr><td><%= @party.name %></td><td><a href="/parties/<%= @party.id %>/edit"><%= @party.table_num %></a></td><td><a href="/parties/<%= @party.id %>/edit"><%= @party.num_guests %></a></td><td><a href="/parties/<%= @party.id %>/edit"><%= @party.paid %></a></td>
-			<td><form action="/parties/<%= @party.id %>/edit" method="get">
-				<input type="submit" value="Edit" id="button_small"></input>
-			</form></td>
-			<td><form action="/parties/<%= @party.id %>" method="post">
-				<input type="hidden" name="_method" value="delete"/></input>
-				<input type="submit" value="Delete" id="button_small"></input>
-			</form></td>
-			<td><form action="/parties/<%= @party.id %>/checkout" method="post">
-				<input type="hidden" name="_method" value="patch"/></input>
-				<input type="submit" value="Mark as Paid" id="button_small"></input>
-			</form></td>
-			<td><form action="/parties/<%= @party.id %>/receipt" method="get">
-				<input type="submit" value="Get Receipt" id="button_small"></input>
-			</form></td>
+			<td><%= get_button_small("/parties/#{@party.id}/edit", "Edit") %></td>
+			<td><%= delete_button("/parties/#{@party.id}") %></td>
+			<td><%= patch_button("/parties/#{@party.id}/checkout", "Mark as Paid") %></td>
+			<td><%= get_button_small("/parties/#{@party.id}/receipt", "Get Receipt") %></td>
 			</tr>
 	</table>
 	<br>
@@ -39,10 +29,7 @@
 			<td><a href="/foods/<%= @foods.find(order.food_id).id %>/edit">$<%= @foods.find(order.food_id).price %></a></td>
 			<td><%= order.no_charge %></td>
 			<% total += @foods.find(order.food_id).price if order.no_charge != true %>
-			<td><form action="/orders/<%= order.id %>/party_page" method="post">
-				<input type="hidden" name="_method" value="patch"/></input>
-				<input type="submit" value="No Charge" id="button_small"></input>
-			</form></td>
+			<td><%= patch_button("/orders/#{order.id}/party_page", "No Charge") %></td>
 		</tr>
 	<% end %>
 
@@ -68,7 +55,5 @@
 		</div>
 	<% end %>	
 	</div>
-
-
-
+	
 </div>

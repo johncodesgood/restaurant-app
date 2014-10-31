@@ -11,20 +11,12 @@
 		<% @orders.each do |order| %>
 			<tr>
 			<tr><td><%= order.id %></td><td><a href="/foods/<%= @foods.find(order.food_id).id %>"><%= @foods.find(order.food_id).name %></a></td><td><a href="/parties/<%= @parties.find(order.party_id).id %>"><%= @parties.find(order.party_id).name %></a></td><td><%= order.no_charge %></td>
-		<td><form action="/orders/<%= order.id %>/orders_page" method="post">
-		<input type="hidden" name="_method" value="patch"/></input>
-		<input type="submit" value="No Charge" id="button_small"></input>
-		</form></td>
-		<td><form action="/orders/<%= order.id %>" method="post">
-		<input type="hidden" name="_method" value="delete"/></input>
-		<input type="submit" value="Delete" id="button_small"></input></td>
+		<td><%= patch_button("/orders/#{order.id}/orders_page", "No Charge") %></td>
+		<td><%= delete_button("/orders/#{order.id}") %></td>
 		</tr>
 	</form>
 		<% end %>
 	</table>
 	<br>
-<!-- 	<form action="/orders/new" method="get">
-	<input type="submit" value="Add New"></input>
-	</form>
- --></div>
+</div>
 </div>

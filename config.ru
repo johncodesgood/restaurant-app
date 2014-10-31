@@ -1,16 +1,12 @@
-
 require 'bundler'
 Bundler.require
 
-require './controllers/application_controller'
-require './controllers/food_controller'
-require './controllers/order_controller'
-require './controllers/party_controller'
-require './controllers/user_controller'
-require './models/food'
-require './models/order'
-require './models/party'
-require './models/user'
+
+Dir.glob('./{helpers,models,controllers}/*.rb').each do |file|
+	require file
+	puts "required #{file}"
+end
+
 require_relative 'connection.rb'
 
 map('/sessions'){ run UserController }
